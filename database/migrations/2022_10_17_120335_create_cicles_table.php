@@ -17,7 +17,7 @@ class CreateCiclesTable extends Migration
             $table->bunsignedBigIncrements('id');
             $table->string('name',255);
             $table->string('img',255);
-            $table->boolean('deleted');
+            $table->boolean('deleted')->default(0);
             $table->timestamps();
         });
     }
