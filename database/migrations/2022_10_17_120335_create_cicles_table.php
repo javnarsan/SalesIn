@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRequirementsTable extends Migration
+class CreateCiclesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateRequirementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('requirements', function (Blueprint $table) {
-            $table->unsignedBigIncrements('id');
-            $table->text('description');
-            $table->unsignedBigIncrements('offer_id')->references('id')->on('offers');
-            $table->boolean('deleted')->default(0);
+        Schema::create('cicles', function (Blueprint $table) {
+            $table->bunsignedBigIncrements('id');
+            $table->string('name',255);
+            $table->string('img',255);
+            $table->boolean('deleted');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateRequirementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('requirements');
+        Schema::dropIfExists('cicles');
     }
 }
