@@ -20,7 +20,7 @@ class CreateArticlesTable extends Migration
             $table->string('image',255);
             $table->boolean('deleted')->default(0);
             $table->text('description');
-            $table->unsignedBigIntegral("cicled_id")->refenreces('id')->on('cicles');
+            $table->unsignedBigIntegral("cicles_id")->refenreces('id')->on('cicles');
             $table->timestamps();
         });
     }
