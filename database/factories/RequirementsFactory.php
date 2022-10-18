@@ -6,9 +6,9 @@ use App\Requirements;
 use Faker\Generator as Faker;
 
 $factory->define(Requirements::class, function (Faker $faker) {
-    $name = $faker->sentence;
     return [
         'description' => $faker->paragraph,
-        'offer_id'=>\App\offers::all()->random()->id
+        'offer_id' => \App\offers::all()->random()->id,
+        'deleted' => $faker->boolean
     ];
 });

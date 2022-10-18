@@ -17,6 +17,7 @@ class CreateRequirementsTable extends Migration
             $table->unsignedBigIncrements('id');
             $table->text('description');
             $table->unsignedBigIncrements('offer_id')->references('id')->on('offers');
+            $table->boolean('deleted');
             $table->timestamps();
         });
     }
