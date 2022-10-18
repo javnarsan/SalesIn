@@ -20,7 +20,7 @@ class CreateAppliedsTable extends Migration
             $table->foreign('offer_id')->references('id')->on('offers');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedInteger('deleted');
+            $table->boolean('deleted')->default(0);
             $table->timestamps();
         });
     }
