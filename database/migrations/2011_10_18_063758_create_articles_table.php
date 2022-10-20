@@ -20,8 +20,12 @@ class CreateArticlesTable extends Migration
             $table->string('image',255);
             $table->boolean('deleted')->default(0);
             $table->text('description');
+<<<<<<< HEAD
             $table->unsignedBigInteger('cicles_id');
             $table->foreign('cicles_id')->references('id')->on('cicles');
+=======
+            $table->unsignedBigIncrements("cicles_id")->refenreces('id')->on('cicles');
+>>>>>>> 7fd85a1e4ec2d718de51fa70ab063d52815ff37e
             $table->timestamps();
         });
     }

@@ -14,8 +14,12 @@ class CreateCiclesTable extends Migration
     public function up()
     {
         Schema::create('cicles', function (Blueprint $table) {
+<<<<<<< HEAD
             $table->engine = "InnoDB";
             $table->bigIncrements('id');
+=======
+            $table->BigIncrements('id');
+>>>>>>> 7fd85a1e4ec2d718de51fa70ab063d52815ff37e
             $table->string('name',255);
             $table->string('img',255);
             $table->boolean('deleted')->default(0);
