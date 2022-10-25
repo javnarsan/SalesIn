@@ -19,5 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
 Route::get('/admin','AdminController@index')->name('admin');
+Route::get('/adminDelete','AdminController@deleteUsers')->name('adminDelete');
 Route::get('/adminUpdate','AdminController@showUsers')->name('adminUpdate');
