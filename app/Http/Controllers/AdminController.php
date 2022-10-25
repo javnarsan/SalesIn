@@ -58,7 +58,8 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user=Uset::getByID(id);
+        return view('adminViews/adminEdit', user);
     }
 
     /**
@@ -88,9 +89,5 @@ class AdminController extends Controller
     {
         $users = User::latest()->paginate(10);
         return view('adminViews/adminUpdate', compact('users'));
-    }
-
-    public function deleteUsers() {
-        return view('adminViews/adminDelete');
     }
 }

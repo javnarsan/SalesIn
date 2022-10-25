@@ -52,38 +52,28 @@
          <div class="row">
              <div class="col-md-8 col-md-offset-2 ">
     	      <h1 class="text-center text-light"> {{ __("Users") }} </h1>
-           <table>
-            <thead class="text-light">
-                <tr>
-                    <th>{{ __("Name") }}</th>
-                    <th>{{ __("Email") }}</th>
-                </tr>
-               
-            </thead>    
-    	      @forelse($users as $user)
+          
+        
+                $user
 	               <div class="panel panel-default">
-                    <tr>
-                    <td>
+                    
 	                    <div class="panel-heading">
-	                    	<a href="../adminEdit/{{ $user->id }}"> {{ $user->name }} </a>
-                            
+	                    <!--	<a href="{{ route('adminEdit $user->id') }}"> {{ $user->name }} </a>-->
+                             <a href="../adminEdit/{{ $user->id }}"> {{ $user->name }} </a>
 	                    </div>
-                    </td>
+                    
                     <td>
 	                 <div class="panel-body text-light">
 	                   {{ $user->email }}
 	                </div>
-                    </td>
-                    </tr>
+                   
 	             </div>
     	      @empty
 	         <div class="alert alert-danger">
 	          {{ __("No hay ningún foro en este momento") }}
 	         </div>
-    	      @endforelse
-             </tr>
-            </table>  
+    	    
+            
          </div>
    
 </div>
-</body
