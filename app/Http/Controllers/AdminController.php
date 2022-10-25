@@ -69,7 +69,7 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       //
     }
 
     /**
@@ -81,5 +81,10 @@ class AdminController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function showUsers()
+    {
+        return view('adminViews/adminUpdate');
     }
 }

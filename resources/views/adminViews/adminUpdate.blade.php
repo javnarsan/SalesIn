@@ -1,74 +1,16 @@
-    <head>
+@section('content')
+<head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Admin Menu</title>
-
-        <!-- Fonts -->
+         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-          <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
-
-
-    </head>
-    <body><div id="app">
+</head>
+<body>
+<div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -117,19 +59,26 @@
             @yield('content')
         </main>
     </div>
-            <div class="content">
-                <div class="title m-b-md">
-                    K Pasa Rauh
-                </div>
-                <div class="links">
-                    <a href="{{ route('login') }}">{{ __('Insertar') }}</a>
-                    <a href="{{ route('adminUpdate') }}">{{ __('Editar') }}</a>
-                    <a href="{{ route('login') }}">{{ __('Borrar') }}</a>
-                    <a href="{{ route('login') }}">{{ __('Activar Cuenta') }}</a>
-                    <a href="{{ route('login') }}">{{ __('Desactivar Cuenta') }}</a>
-                </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+    	<h1 class="text-center text-mute"> {{ __("Usuarios") }} </h1>
 
-              
-            </div>
+    	@forelse($user as $user)
+	        <div class="panel panel-default">
+	            <div class="panel-heading">
+	            	<a href="users/{{ $user->id }}"> {{ $user->name }} </a>
+	            </div>
+
+	            <div class="panel-body">
+	                {{ $user->email }}
+	            </div>
+	        </div>
+    	@empty
+	    <div class="alert alert-danger">
+	        {{ __("No hay ningún foro en este momento") }}
+	    </div>
+    	@endforelse
         </div>
-    </body>
+    </div>
+@endsection
+</body
