@@ -87,4 +87,8 @@ class AdminController extends Controller
     {
         return view('adminViews/adminUpdate');
     }
+
+    public function deleteUsers() {
+        return view('adminViews/adminDelete');
+    }
 }
