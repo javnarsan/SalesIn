@@ -126,11 +126,9 @@
                     K Pasa Rauh
                 </div>
                 <div class="links">
-                    <a href="{{ route('login') }}" class="invisible"> {{ __('Insert Users') }}</a>
+                    <a href="{{ route('login') }}" class="invisible text-light"> {{ __('Insert Users') }}</a>
                     <a href="{{ route('adminUpdate') }}" class="text-light">{{ __('Edit Users') }}</a>
                     <a href="{{ route('adminDelete') }}" class="text-light">{{ __('Delete Users') }}</a>
-                    <a href="{{ route('login') }}"class="text-light">{{ __('Active Account') }}</a>
-                    <a href="{{ route('login') }}"class="text-light">{{ __('Deactivate Account') }}</a>
                 </div>
 
               
