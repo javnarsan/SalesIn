@@ -124,7 +124,7 @@
                 <div class="links">
                     <a href="{{ route('login') }}">{{ __('Insertar') }}</a>
                     <a href="{{ route('adminUpdate') }}">{{ __('Editar') }}</a>
-                    <a href="{{ route('login') }}">{{ __('Borrar') }}</a>
+                    <a href="{{ route('adminDelete') }}">{{ __('Borrar') }}</a>
                     <a href="{{ route('login') }}">{{ __('Activar Cuenta') }}</a>
                     <a href="{{ route('login') }}">{{ __('Desactivar Cuenta') }}</a>
                 </div>
