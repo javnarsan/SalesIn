@@ -26,6 +26,20 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Surname') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}" required autocomplete="surname" autofocus>
+
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
@@ -37,6 +51,19 @@
                                     </span>
                                 @enderror
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option value="" selected disabled hidden>Choose an option</option>
+                                <option value="DAM">DAM</option>
+                                @foreach($provincias as $provincia)
+                                    <option>{{$provincia->provincia}}</option>
+                                @endforeach
+                                <option value="" selected disabled hidden>Choose an option</option>
+                            </select>
+                        </div>
+                          <a class="btn btn-danger"  href="#" value="Cancelar">Cancelar</a>
+                          <input class="btn btn-primary" type="submit"  value="crear"> 
                         </div>
 
                         <div class="form-group row">
