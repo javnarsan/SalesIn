@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 
-
-class AdminController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('adminViews/adminMenu');
+        $users=User::all();
     }
 
     /**
@@ -70,7 +69,7 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-       //
+        //
     }
 
     /**
@@ -82,11 +81,5 @@ class AdminController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function showUsers()
-    {
-        $users = User::latest()->paginate(10);
-        return view('adminViews/adminUpdate', compact('users'));
     }
 }

@@ -62,14 +62,18 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            .fondoCabecero{
+            background-color: #555353
+           }
         </style>
           <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
 
 
     </head>
-    <body><div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <body class="bg-dark text-light" >
+        <div id="app">
+        <nav class="navbar navbar-expand-md navbar-dark fondoCabecero shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'SalesIn') }}
@@ -122,11 +126,11 @@
                     K Pasa Rauh
                 </div>
                 <div class="links">
-                    <a href="{{ route('login') }}">{{ __('Insertar') }}</a>
-                    <a href="{{ route('adminUpdate') }}">{{ __('Editar') }}</a>
-                    <a href="{{ route('login') }}">{{ __('Borrar') }}</a>
-                    <a href="{{ route('login') }}">{{ __('Activar Cuenta') }}</a>
-                    <a href="{{ route('login') }}">{{ __('Desactivar Cuenta') }}</a>
+                    <a href="{{ route('login') }}" class="invisible"> {{ __('Insert Users') }}</a>
+                    <a href="{{ route('adminUpdate') }}" class="text-light">{{ __('Edit Users') }}</a>
+                    <a href="{{ route('login') }}" class="text-light">{{ __('Delete Users') }}</a>
+                    <a href="{{ route('login') }}"class="text-light">{{ __('Active Account') }}</a>
+                    <a href="{{ route('login') }}"class="text-light">{{ __('Deactivate Account') }}</a>
                 </div>
 
               
