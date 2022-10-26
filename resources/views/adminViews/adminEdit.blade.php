@@ -1,45 +1,87 @@
 
-<head>
+    <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-         <!-- Fonts -->
+
+        <title>Admin Edit</title>
+
+        <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <style type="text/css">
-            
-           .margen{
-           margin-left: 40px;
-           }
-           .fondoCabecero{
+        <style>
+            html, body {
+                background-color: #fff;
+                color: #636b6f;
+                font-family: 'Nunito', sans-serif;
+                font-weight: 200;
+                height: 100vh;
+                margin: 0;
+            }
+
+            .full-height {
+                height: 100vh;
+            }
+
+            .flex-center {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
+
+            .position-ref {
+                position: relative;
+            }
+
+            .top-right {
+                position: absolute;
+                right: 10px;
+                top: 18px;
+            }
+
+            .content {
+                text-align: center;
+            }
+
+            .title {
+                font-size: 84px;
+            }
+
+            .links > a {
+                color: #636b6f;
+                padding: 0 25px;
+                font-size: 13px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            .m-b-md {
+                margin-bottom: 30px;
+            }
+            .fondoCabecero{
             background-color: #555353
            }
-           
         </style>
-</head>
+          <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}" defer></script>
 
-<body class="bg-dark">
 
-<div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark shadow-sm fondoCabecero">
+    </head>
+    <body class="bg-dark text-light" >
+        <div id="app">
+        <nav class="navbar navbar-expand-md navbar-dark fondoCabecero shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('admin') }}">
+                <a class="navbar-brand" href="{{ url('/adminUpdate') }}">
                     {{ config('app.name', 'SalesIn') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                </div>
             </div>
         </nav>
 
@@ -47,33 +89,60 @@
             @yield('content')
         </main>
     </div>
-    
-        <div class="margen ">
-         <div class="row">
-             <div class="col-md-8 col-md-offset-2 ">
-    	      <h1 class="text-center text-light"> {{ __("Users") }} </h1>
-          
-        
-                $user
-	               <div class="panel panel-default">
-                    
-	                    <div class="panel-heading">
-	                    <!--	<a href="{{ route('adminEdit $user->id') }}"> {{ $user->name }} </a>-->
-                             <a href="../adminEdit/{{ $user->id }}"> {{ $user->name }} </a>
-	                    </div>
-                    
-                    <td>
-	                 <div class="panel-body text-light">
-	                   {{ $user->email }}
-	                </div>
-                   
-	             </div>
-    	      @empty
-	         <div class="alert alert-danger">
-	          {{ __("No hay ningún foro en este momento") }}
-	         </div>
-    	    
-            
-         </div>
-   
-</div>
+            <div class="content">
+                <div class="container">
+                @if($user)
+                <form method="POST" action="{{ route('login') }}">
+                        @csrf
+                        
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right" >{{ __('E-Mail Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" required autocomplete="email" autofocus>
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Nami') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="name" class="form-control @error('password') is-invalid @enderror" name="name">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Surname') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="surname" type="surname" class="form-control " name="surname" >
+
+                            </div>
+                        </div>
+                       
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Save') }}
+                                </button>
+
+                                @if (Route::has('password.request'))
+                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        {{ __('Forgot Your Password?') }}
+                                    </a>
+                                @endif
+                            </div>
+                        </div>
+                    </form>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </body>

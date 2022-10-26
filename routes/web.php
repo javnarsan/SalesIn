@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
@@ -23,4 +23,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin','AdminController@index')->name('admin');
 Route::get('/adminDelete','AdminController@deleteUsers')->name('adminDelete');
 Route::get('/adminUpdate','AdminController@showUsers')->name('adminUpdate');
-Route::get('/adminEdit/{$user->id}','AdminController@edit')->name('adminEdit');
+Route::get('/adminEdit/{id}','AdminController@edit');

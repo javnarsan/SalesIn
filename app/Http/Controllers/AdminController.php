@@ -47,7 +47,7 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        //
+       //
     }
 
     /**
@@ -58,8 +58,8 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        $user=Uset::getByID(id);
-        return view('adminViews/adminEdit', user);
+        $user=User::find('$id');
+        return view('adminViews/adminEdit')->with('user',$user);
     }
 
     /**
