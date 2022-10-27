@@ -65,7 +65,7 @@
                     <tr>
                     <td>
 	                    <div class="panel-heading">
-	                    	<a href="adminEdit/{$user->id}"> {{ $user->name }} </a>
+	                    	<a href="{{ route('adminEdit', $user->id)}}"> {{ $user->name }} </a>
                             
 	                    </div>
                     </td>

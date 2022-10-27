@@ -76,7 +76,7 @@
         <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark fondoCabecero shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/adminUpdate') }}">
+                <a class="navbar-brand" href="{{ url('admin/adminUpdate') }}">
                     {{ config('app.name', 'SalesIn') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -91,57 +91,52 @@
     </div>
             <div class="content">
                 <div class="container">
-                @if($user)
-                <form method="POST" action="{{ route('login') }}">
-                        @csrf
+                    <form method="POST" action="{{ route('login') }}">
+                            <div class="title">
+                            {{ __('EDIT USER') }}
+                            </div>
+                                <div class="form-group row">
+                                    <label for="email" class="col-md-3 col-form-label text-md-right" >{{ __('E-Mail Address') }}</label>
+                                
+                                    <div class="col-md-6">
+                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" required autocomplete="email" autofocus>
+
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="password" class="col-md-3 col-form-label text-md-right">{{ __('Name') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input id="name" type="name" class="form-control" name="name" value="{{$user->name}}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="password" class="col-md-3 col-form-label text-md-right">{{ __('Surname') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input id="surname" type="surname" class="form-control " name="surname"  value="{{$user->surname}}">
+
+                                    </div>
+                                </div>
                         
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right" >{{ __('E-Mail Address') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" required autocomplete="email" autofocus>
+                                <div class="form-group row mb-0">
+                                    <div class="col-md-7 offset-md-0.75">
+                                        <button type="submit" class="btn btn-primary">
+                                            {{ __('Save') }}
+                                        </button>
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Nami') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="name" class="form-control @error('password') is-invalid @enderror" name="name">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Surname') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="surname" type="surname" class="form-control " name="surname" >
-
-                            </div>
-                        </div>
+                                      
+                                    </div>
                        
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Save') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
                     </form>
-                    @endif
                 </div>
             </div>
         </div>

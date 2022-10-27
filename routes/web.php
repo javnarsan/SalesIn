@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +22,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::get('/admin','AdminController@index')->name('admin');
-Route::get('/adminDelete','AdminController@deleteUsers')->name('adminDelete');
-Route::get('/adminUpdate','AdminController@showUsers')->name('adminUpdate');
-Route::get('/adminEdit/{id}','AdminController@edit');
+Route::get('/admin/adminDelete','AdminController@deleteUsers')->name('adminDelete');
+Route::get('/admin/adminUpdate','AdminController@showUsers')->name('adminUpdate');
+Route::get('/admin/adminUpdate/{user}/adminEdit','AdminController@edit')->name('adminEdit');

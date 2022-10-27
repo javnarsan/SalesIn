@@ -58,8 +58,10 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        $user=User::find('$id');
-        return view('adminViews/adminEdit')->with('user',$user);
+        
+       
+       
+        return view('adminViews.adminEdit',[ 'user' => User::find($id)]);
     }
 
     /**
