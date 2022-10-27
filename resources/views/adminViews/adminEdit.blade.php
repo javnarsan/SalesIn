@@ -91,7 +91,7 @@
     </div>
             <div class="content">
                 <div class="container">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('Toadmin') }}">
                             <div class="title">
                             {{ __('EDIT USER') }}
                             </div>
@@ -118,26 +118,50 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="password" class="col-md-3 col-form-label text-md-right">{{ __('Surname') }}</label>
+                                    <label for="surname" class="col-md-3 col-form-label text-md-right">{{ __('Surname') }}</label>
 
                                     <div class="col-md-6">
                                         <input id="surname" type="surname" class="form-control " name="surname"  value="{{$user->surname}}">
 
                                     </div>
                                 </div>
-                        
 
-                                <div class="form-group row mb-0">
-                                    <div class="col-md-7 offset-md-0.75">
-                                        <button type="submit" class="btn btn-primary">
-                                            {{ __('Save') }}
-                                        </button>
+                                <div class="form-group row">
+                                    <label for="cicle_id" class="col-md-3 col-form-label text-md-right">{{ __('Cicle_id') }}</label>
 
-                                      
+                                    <div class="col-md-6">
+                                        <input id="cicle_id" type="cicle_id" class="form-control" name="cicle_id" value="{{$user->cicle_id}}">
                                     </div>
-                       
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="password" class="col-md-3 col-form-label text-md-right">{{ __('Active') }}</label>
+                                    @if($user->actived==1)
+                                    <div class="col-md-6">
+                                        <input id="actived" type="check"  name="actived" checked disabled>
+                                    </div>
+                                    @else
+                                    <div class="col-md-1">
+                                    <select name="type" id="type">
+                                        <option value="1">{{ __('Actived') }}</option>
+                                        <option value="0">{{ __('Desactive') }}</option>
+                                    </select>
+                                    </div>
+                                    @endif
+                                </div>
+                    
+
+                                        <div class="form-group  mb-0">
+                                                <div class="col-md-9 offset-md-0">
+                                                    <button type="submit" class="btn btn-primary">
+                                                        {{ __('Save') }}
+                                                    </button>
+                                                </div>
+                                        </div>    
+
+                                
+                        
                     </form>
                 </div>
             </div>
-        </div>
     </body>

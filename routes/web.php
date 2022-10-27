@@ -25,3 +25,4 @@ Route::get('/admin','AdminController@index')->name('admin');
 Route::get('/admin/adminDelete','AdminController@deleteUsers')->name('adminDelete');
 Route::get('/admin/adminUpdate','AdminController@showUsers')->name('adminUpdate');
 Route::get('/admin/adminUpdate/{user}/adminEdit','AdminController@edit')->name('adminEdit');
+Route::post('/admin/adminUpdate','AdminController@update')->name('Toadmin');

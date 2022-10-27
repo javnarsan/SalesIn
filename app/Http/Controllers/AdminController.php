@@ -72,8 +72,17 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-       //
+    {   
+        $user= User::find($id);
+        $user->name =$request->name;
+        $user->surname =$request->surname;
+        $user->email =$request->email;
+        $user->cicle_id =$request->cicle_id;
+        $user->actived = $request ->actived;
+        $user->save();
+
+        Flash::warning('User '. $user->name.' has edited');
+        return redirect()->route('Toadmin');
     }
 
     /**
