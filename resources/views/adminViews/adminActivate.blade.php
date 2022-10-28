@@ -16,6 +16,11 @@
            .fondoCabecero{
             background-color: #555353
            }
+           .margen-paginate{
+            margin: auto;
+            width: 470px;
+            padding: 10px;
+           }
            
         </style>
 </head>
@@ -49,41 +54,45 @@
     </div>
     
         <div class="margen ">
-         <div class="row">
-             <div class="col-md-12">
-    	      <h1 class="text-center text-light col-md-12"> {{ __("Users Not Activated") }} </h1>
-           <table>
-            <thead class="text-light">
-                <tr>
-                    <th class="col-md-1 text-md-right">{{ __("Name") }}</th>
-                    <th class="col-md-1 text-md-left">{{ __("Email") }}</th>
-                </tr>
-               
-            </thead>    
-    	      @forelse($users as $user)
-	               <div class="panel panel-default">
-                    <tr>
-                        @if($user->actived === 0)
-                            <td>
-                                <div class="panel-heading col-md-12 text-md-right">
-                                    <a href="{{ route('adminActivated', $user->id)}}"> {{ $user->name }} </a> 
-                                </div>
-                            </td>
-                            <td>
-                                <div class="panel-body text-light text-md-left">
-                                    {{ $user->email }}
-                                </div>
-                            </td>
-                        @endif
-                    </tr>
-	             </div>
-    	      @empty
-	        <div class="alert alert-danger">
-	            {{ __("No hay ningún foro en este momento") }}
-	         </div>
-    	      @endforelse
-            </table>  
-         </div>
-   
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="text-center text-light col-md-12"> {{ __("Users Not Activated") }} </h1>
+                <table>
+                    <thead class="text-light">
+                        <tr>
+                            <th class="col-md-1 text-md-right">{{ __("Name") }}</th>
+                            <th class="col-md-1 text-md-left">{{ __("Email") }}</th>
+                        </tr>
+                    </thead>    
+                    @forelse($users as $user)
+                        <div class="panel panel-default">
+                            <tr>
+                                @if($user->actived === 0)
+                                    <td>
+                                        <div class="panel-heading col-md-12 text-md-right">
+                                            <a href="{{ route('adminActivated', $user->id)}}"> {{ $user->name }} </a> 
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="panel-body text-light text-md-left">
+                                            {{ $user->email }}
+                                        </div>
+                                    </td>
+                                @endif
+                            </tr>
+                        </div>
+                    @empty
+                    <div class="alert alert-danger">
+                        {{ __("No hay ningún usuario en este momento") }}
+                    </div>
+                    @endforelse
+                </table>
+            </div>
+        </div>
+        <div class="margen-paginate">
+            @if($users->count())
+                {{ $users->links() }}
+            @endif
+        </div>
 </div>
 </body>

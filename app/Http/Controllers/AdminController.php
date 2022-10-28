@@ -100,7 +100,7 @@ class AdminController extends Controller
 
     public function activateUsers()
     {
-        $users = User::latest()->paginate(10);
+        $users = User::with([])->paginate(10);
         return view('adminViews/adminActivate', compact('users'));
     }
 }
