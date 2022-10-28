@@ -15,7 +15,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('adminViews/adminMenu');
+        $users = User::latest()->paginate(10);
+        return view('adminViews/index', compact('users'));
     }
 
     /**
@@ -58,10 +59,8 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        
-       
-       
-        return view('adminViews.adminEdit',[ 'user' => User::find($id)]);
+         $user = User::find($id);
+        return view('adminViews/edit', compact('user'));
     }
 
     /**
@@ -71,18 +70,27 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public  function update(Request $request, $id)
     {   
-        $user= User::find($id);
-        $user->name =$request->name;
-        $user->surname =$request->surname;
-        $user->email =$request->email;
-        $user->cicle_id =$request->cicle_id;
-        $user->actived = $request ->actived;
-        $user->save();
+        
 
-        Flash::warning('User '. $user->name.' has edited');
-        return redirect()->route('Toadmin');
+        $request->validate([
+            'name'=>'required',
+            'surname'=>'required',
+            'email'=>'required',
+            'cicle_id'=>'required'
+        ]); 
+        $user = User::find($id);
+        // Getting values from the blade template form
+        $user->name =  $request->get('name');
+        $user->surname = $request->get('surname');
+        $user->email = $request->get('email');
+        $user->cicle_id = $request->get('cicle_id');
+        $user->actived = $request->get('actived');
+        $user->update();
+
+        return redirect('adminViews')->with('success', 'User updated.'); // -> resources/views/stocks/index.blade.php
+       
     }
 
     /**
@@ -96,9 +104,7 @@ class AdminController extends Controller
         //
     }
 
-    public function showUsers()
-    {
-        $users = User::latest()->paginate(10);
-        return view('adminViews/adminUpdate', compact('users'));
+    public function menu(){
+      return  view('adminViews/adminMenu');
     }
 }

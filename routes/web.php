@@ -21,8 +21,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/admin','AdminController@index')->name('admin');
-Route::get('/admin/adminDelete','AdminController@deleteUsers')->name('adminDelete');
-Route::get('/admin/adminUpdate','AdminController@showUsers')->name('adminUpdate');
-Route::get('/admin/adminUpdate/{user}/adminEdit','AdminController@edit')->name('adminEdit');
-Route::post('/admin/adminUpdate','AdminController@update')->name('Toadmin');
+Route::get('/adminMenu','AdminController@menu')->name('adminMenu');
+Route::resource('adminViews','AdminController');

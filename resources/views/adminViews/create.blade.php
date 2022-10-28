@@ -121,17 +121,39 @@
             @yield('content')
         </main>
     </div>
-            <div class="content">
-                <div class="title m-b-md">
-                    K Pasa Rauh
+            <div class="row">
+        <div class="col-sm-8 offset-sm-2">
+            <h1 class="display-3">{{__(Add Stock)}}</h1>
+        <div>
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div><br />
+            @endif
+            <form method="post" action="{{ route('adminViews.store') }}">
+                @csrf
+                <div class="form-group">    
+                    <label for="user_name">{{__(Stock Name: )}}</label>
+                    <input type="text" class="form-control" name="user_name"/>
                 </div>
-                <div class="links">
-                    
-                    <a href="{{ route('adminViews.index') }}" class="text-light">{{ __('Users') }}</a>
-                   
+        
+                <div class="form-group">
+                    <label for="ticket">{{__(Stock Ticket:)}}</label>
+                    <input type="text" class="form-control" name="ticket"/>
                 </div>
-
-              
-            </div>
+        
+                <div class="form-group">
+                    <label for="value">Stock Value:</label>
+                    <input type="text" class="form-control" name="value"/>
+                </div>
+                <button type="submit" class="btn btn-primary">Add User</button>
+            </form>
         </div>
+        </div>
+        </div>
+                </div>
     </body>
