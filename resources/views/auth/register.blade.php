@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -55,9 +56,8 @@
                         <div class="form-group">
                             <select class="form-control">
                                 <option value="" selected disabled hidden>Choose an option</option>
-                                <option value="DAM">DAM</option>
-                                @foreach($provincias as $provincia)
-                                    <option>{{$provincia->provincia}}</option>
+                                @foreach(Cicles::all() as $cicle)
+                                    <option>{{$cicle->name}}</option>
                                 @endforeach
                                 <option value="" selected disabled hidden>Choose an option</option>
                             </select>

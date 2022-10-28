@@ -104,7 +104,26 @@ class AdminController extends Controller
         //
     }
 
+
     public function menu(){
       return  view('adminViews/adminMenu');
+
+    } 
+    public function activate($id)
+    {
+        return view('adminViews.adminActivated',[ 'user' => User::findOrFail($id)]);
+    }
+
+    public function showUsers()
+    {
+        $users = User::latest()->paginate(10);
+        return view('adminViews/adminUpdate', compact('users'));
+
+    }
+
+    public function activateUsers()
+    {
+        $users = User::with([])->paginate(10);
+        return view('adminViews/adminActivate', compact('users'));
     }
 }
