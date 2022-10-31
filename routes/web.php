@@ -23,4 +23,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/adminMenu','AdminController@menu')->name('adminMenu');
 Route::get('/adminViews/{id}/adminActivate','AdminController@activate')->name('adminActivate');
+Route::get('/adminViews/{id}/adminDeactivate','AdminController@deactivate')->name('adminDeactivate');
 Route::resource('adminViews','AdminController');
