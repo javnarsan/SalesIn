@@ -78,9 +78,9 @@
                     @endif
                     @if($user->actived==1)
                     <td>
-                        <form action="{{ route('adminViews.destroy', $user->id)}}" method="post">
+                        <form action="{{ route('adminDeactivate', $user->id)}}" method="post">
                         @csrf
-                        @method('PATCH')
+                        @method('GET')
                         <button class="btn btn-danger" type="submit">Deactivate</button>
                         </form>
                     </td>

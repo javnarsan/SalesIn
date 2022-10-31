@@ -116,4 +116,12 @@ class AdminController extends Controller
         $user->update();
         return redirect('adminViews')->with('success', 'User activated.');
     }
+    public function deactivate($id)
+    {
+        $user = User::find($id);
+        $user->actived=0;
+        $user->update();
+        return redirect('adminViews')->with('success', 'User deactivated.');
+    }
+
 }
