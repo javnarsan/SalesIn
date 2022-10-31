@@ -76,16 +76,7 @@
     </head>
     <body class="bg-dark text-light" >
         <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark fondoCabecero shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ route('adminViews.index') }}">
-                    {{ config('app.name', 'SalesIn') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-        </nav>
+        
 
         <main class="py-4">
             @yield('main')
