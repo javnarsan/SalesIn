@@ -59,7 +59,7 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-         $user = User::find($id);
+        $user = User::find($id);
         return view('adminViews/edit', compact('user'));
     }
 
@@ -70,10 +70,8 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public  function update(Request $request, $id)
+    public function update(Request $request, $id)
     {   
-        
-
         $request->validate([
             'name'=>'required',
             'surname'=>'required',
@@ -82,7 +80,7 @@ class AdminController extends Controller
         ]); 
         $user = User::find($id);
         // Getting values from the blade template form
-        $user->name =  $request->get('name');
+        $user->name = $request->get('name');
         $user->surname = $request->get('surname');
         $user->email = $request->get('email');
         $user->cicle_id = $request->get('cicle_id');
@@ -104,29 +102,18 @@ class AdminController extends Controller
         $user->deleted=1;
         $user->update();
         return redirect('adminViews')->with('success', 'User deleted.'); 
-
     }
 
+    public function menu()
+    {
+      return view('adminViews/adminMenu');
+    }
 
-    public function menu(){
-      return  view('adminViews/adminMenu');
-
-    } 
     public function activate($id)
     {
-        return view('adminViews.adminActivated',[ 'user' => User::findOrFail($id)]);
-    }
-
-    public function showUsers()
-    {
-        $users = User::latest()->paginate(10);
-        return view('adminViews/adminUpdate', compact('users'));
-
-    }
-
-    public function activateUsers()
-    {
-        $users = User::with([])->paginate(10);
-        return view('adminViews/adminActivate', compact('users'));
+        $user = User::find($id);
+        $user->actived=1;
+        $user->update();
+        return redirect('adminViews')->with('success', 'User activated.');
     }
 }
