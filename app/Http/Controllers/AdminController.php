@@ -86,7 +86,6 @@ class AdminController extends Controller
         $user->surname = $request->get('surname');
         $user->email = $request->get('email');
         $user->cicle_id = $request->get('cicle_id');
-        $user->actived = $request->get('actived');
         $user->update();
 
         return redirect('adminViews')->with('success', 'User updated.'); // -> resources/views/stocks/index.blade.php
@@ -101,7 +100,11 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->deleted=1;
+        $user->update();
+        return redirect('adminViews')->with('success', 'User deleted.'); 
+
     }
 
 

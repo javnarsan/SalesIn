@@ -130,17 +130,6 @@
                 <input type="text" class="form-control" name="cicle_id" value="{{ $user->cicle_id }}" />
             </div>
 
-            <div class="form-group">
-                <label for="actived">State</label>
-                
-                
-                <div class="col-md-0">
-                    <select name="actived" id="actived">
-                        <option value="1">Actived</option>
-                        <option value="0">Desactive</option>
-                    </select>
-                </div>
-            </div>
 
             <button type="submit" class="btn btn-primary">Save</button>
         </form>
