@@ -56,14 +56,12 @@
                         <div class="form-group">
                             <select class="form-control">
                                 <option value="" selected disabled hidden>Choose an option</option>
-                                @foreach(Cicles::all() as $cicle)
-                                    <option>{{$cicle->name}}</option>
+                                @foreach($cicles as $cicle)
+                                    <option value="$cicle->id">{{$cicle->name}}</option>
                                 @endforeach
                                 <option value="" selected disabled hidden>Choose an option</option>
                             </select>
                         </div>
-                          <a class="btn btn-danger"  href="#" value="Cancelar">Cancelar</a>
-                          <input class="btn btn-primary" type="submit"  value="crear"> 
                         </div>
 
                         <div class="form-group row">

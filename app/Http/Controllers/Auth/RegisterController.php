@@ -70,7 +70,12 @@ class RegisterController extends Controller
             'surname' => $data['surname'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            #dd($data['name'],$data['surname'],$data['email']),
+            'cicle_id' =>$data['cicle_id'],
         ]);
+    }
+    protected function showRegistrationForm()
+    {
+        $cicles=cicles::all();
+        return view('auth.register', compact('cicles'));
     }
 }
