@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -9,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form class="form" method="post" action="{{ route('register') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -61,7 +60,6 @@
                                 @endforeach
                                 <option value="" selected disabled hidden>Choose an option</option>
                             </select>
-                        </div>
                         </div>
 
                         <div class="form-group row">
