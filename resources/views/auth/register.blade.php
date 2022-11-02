@@ -53,12 +53,12 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <select class="form-control">
-                                <option value="" selected disabled hidden>Choose an option</option>
+                            <select name="cicle_id" class="form-control{{ $errors->has('cicle_id') ? ' is-invalid':''}}">
+                                <option value="" selected disabled hidden>Choose a cicle</option>
                                 @foreach($cicles as $cicle)
-                                    <option value="$cicle->id">{{$cicle->name}}</option>
+                                    <option value="{{$cicle->id}}">{{$cicle->name}}</option>
                                 @endforeach
-                                <option value="" selected disabled hidden>Choose an option</option>
+                                <option value="" selected disabled hidden>Choose a cicle</option>
                             </select>
                         </div>
 
