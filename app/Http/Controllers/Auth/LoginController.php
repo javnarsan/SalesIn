@@ -44,7 +44,7 @@ class LoginController extends Controller
         if ($this->guard()->validate($this->credentials($request))) {
             $user = $this->guard()->getLastAttempted();
             if($user->deleted){
-                //*Warning: Deleted account
+                //Aqui no hace falta poner aviso porque Laravel lo tiene en cuenta como si el correo no existiese
             }else{
                 // Make sure the user is active
                 if ($user->actived && $this->attemptLogin($request)) {

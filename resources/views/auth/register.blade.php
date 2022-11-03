@@ -77,7 +77,7 @@
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">
-                                <i class="fa fa-solid fa-user-secret"></i>
+                                <i class="fa fa-solid fa-lock"></i>
                             </label>
 
                             <div class="col-md-6">
@@ -93,7 +93,7 @@
 
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">
-                                <i class="fa fa-solid fa-user-secret"></i>
+                                <i class="fa fa-solid fa-lock"></i>
                             </label>
 
                             <div class="col-md-6">
