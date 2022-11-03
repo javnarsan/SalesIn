@@ -36,4 +36,36 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function login(\Illuminate\Http\Request $request) {
+        $this->validateLogin($request);    
+        // This section is the only change
+        
+        if ($this->guard()->validate($this->credentials($request))) {
+            $user = $this->guard()->getLastAttempted();
+            if($user->deleted){
+                //*Warning: Deleted account
+            }else{
+                // Make sure the user is active
+                if ($user->actived && $this->attemptLogin($request)) {
+                    // Send the normal successful login response
+                    return $this->sendLoginResponse($request);
+                } else {
+                    //*Warning: Deactivated account
+                    // Increment the failed login attempts and redirect back to the
+                    // login form with an error message.
+                    return redirect()
+                        ->back()
+                        ->withInput($request->only($this->username(), 'remember'))
+                        ->withErrors(['active' => 'You must be active to login.']);
+                }
+            }
+        }
+    
+        // If the login attempt was unsuccessful we will increment the number of attempts
+        // to login and redirect the user back to the login form. Of course, when this
+        // user surpasses their maximum number of attempts they will get locked out.
+    
+        return $this->sendFailedLoginResponse($request);
+    }
 } 

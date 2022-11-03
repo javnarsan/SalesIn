@@ -87,4 +87,16 @@ class RegisterController extends Controller
         return view('auth.register', compact('cicles'));
     }
     
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        // $this->guard()->login($user);
+
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
+    }
+
 }
