@@ -64,7 +64,7 @@
                         <form action="{{ route('adminViews.destroy', $user->id)}}" method="post">
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-danger" type="submit">Delete</button>
+                        <button class="btn btn-danger" onclick="return confirm('Are you sure to delete this user?');" type="submit">Delete</button>
                         </form>
                     </td>
                     @if($user->actived==0)
