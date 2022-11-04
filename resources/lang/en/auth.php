@@ -15,5 +15,8 @@ return [
 
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'deleted' => 'Your account has been deleted. You may want to contact your administrator.',
+    'deactivated' => 'Your account is deactivated. You may want to contact your administrator.',
+    'not_verified' => 'Your account is still not verified. Please check your email for further instructions.',
 
 ];
