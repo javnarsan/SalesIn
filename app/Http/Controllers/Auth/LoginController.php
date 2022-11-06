@@ -43,11 +43,11 @@ class LoginController extends Controller
         
         if ($this->guard()->validate($this->credentials($request))) {
             $user = $this->guard()->getLastAttempted();
-            if($user->deleted){
+            if($user->deleted==1){
                 //Aqui no hace falta poner aviso porque Laravel lo tiene en cuenta como si el correo no existiese
             }else{
-                // Make sure the user is active
-                if ($user->actived && $this->attemptLogin($request)) {
+                // Make sure the user is actived
+                if ($user->actived==1 && $this->attemptLogin($request)) {
                     // Send the normal successful login response
                     return $this->sendLoginResponse($request);
                 } else {
@@ -57,7 +57,7 @@ class LoginController extends Controller
                     return redirect()
                         ->back()
                         ->withInput($request->only($this->username(), 'remember'))
-                        ->withErrors(['active' => 'You must be active to login.']);
+                        ->withErrors(['error' => 'You must be actived to login. Please, contact your administrator.']);
                 }
             }
         }
