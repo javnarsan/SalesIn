@@ -57,7 +57,7 @@ class LoginController extends Controller
                     return redirect()
                         ->back()
                         ->withInput($request->only($this->username(), 'remember'))
-                        ->withErrors(['error' => 'You must be actived to login. Please, contact your administrator.']);
+                        ->withErrors(['error' => 'You must be active to login.']);
                 }
             }
         }
