@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -36,47 +37,58 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-
+    public function verify($id)
+    {
+        $user = User::find($id);
+        $user->email_verified_at=now();
+        $user->update();
+        return redirect('home');
+    }
     public function login(\Illuminate\Http\Request $request) {
         $this->validateLogin($request);    
         // This section is the only change
         
         if ($this->guard()->validate($this->credentials($request))) {
             $user = $this->guard()->getLastAttempted();
-            if($user->deleted==1){
-                if ($user && \Hash::check($request->password, $user->password) && $user->active != 1) {
-                    $errors = [$this->username() => trans('auth.deleted')];
-                }
-                return redirect()->back()
-                    ->withInput($request->only($this->username(), 'remember'))
-                    ->withErrors($errors);
+            if($user->type=='A'){
+                return view('adminViews/adminMenu');
             }else{
-                if($user->email_verified_at==null){
+                if($user->deleted==1){
                     if ($user && \Hash::check($request->password, $user->password) && $user->active != 1) {
-                        $errors = [$this->username() => trans('auth.not_verified')];
+                        $errors = [$this->username() => trans('auth.deleted')];
                     }
                     return redirect()->back()
                         ->withInput($request->only($this->username(), 'remember'))
                         ->withErrors($errors);
                 }else{
-                    // Make sure the user is actived
-                    if ($user->actived==1 && $this->attemptLogin($request)) {
-                        // Send the normal successful login response
-                        return $this->sendLoginResponse($request);
-                    } else {
-                        //*Warning: Deactivated account
-                        // Increment the failed login attempts and redirect back to the
-                        // login form with an error message.
+                    if($user->email_verified_at==null){
                         if ($user && \Hash::check($request->password, $user->password) && $user->active != 1) {
-                            $errors = [$this->username() => trans('auth.not_actived')];
+                            $errors = [$this->username() => trans('auth.not_verified')];
                         }
                         return redirect()->back()
                             ->withInput($request->only($this->username(), 'remember'))
                             ->withErrors($errors);
+                    }else{
+                        // Make sure the user is actived
+                        if ($user->actived==1 && $this->attemptLogin($request)) {
+                            // Send the normal successful login response
+                            return $this->sendLoginResponse($request);
+                        } else {
+                            //*Warning: Deactivated account
+                            // Increment the failed login attempts and redirect back to the
+                            // login form with an error message.
+                            if ($user && \Hash::check($request->password, $user->password) && $user->active != 1) {
+                                $errors = [$this->username() => trans('auth.not_actived')];
+                            }
+                            return redirect()->back()
+                                ->withInput($request->only($this->username(), 'remember'))
+                                ->withErrors($errors);
+                        }
                     }
+                    
                 }
-                
             }
+            
         }
     
         // If the login attempt was unsuccessful we will increment the number of attempts
