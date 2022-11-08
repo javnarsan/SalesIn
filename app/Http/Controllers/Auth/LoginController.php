@@ -44,21 +44,38 @@ class LoginController extends Controller
         if ($this->guard()->validate($this->credentials($request))) {
             $user = $this->guard()->getLastAttempted();
             if($user->deleted==1){
-                //Aqui no hace falta poner aviso porque Laravel lo tiene en cuenta como si el correo no existiese
-            }else{
-                // Make sure the user is actived
-                if ($user->actived==1 && $this->attemptLogin($request)) {
-                    // Send the normal successful login response
-                    return $this->sendLoginResponse($request);
-                } else {
-                    //*Warning: Deactivated account
-                    // Increment the failed login attempts and redirect back to the
-                    // login form with an error message.
-                    return redirect()
-                        ->back()
-                        ->withInput($request->only($this->username(), 'remember'))
-                        ->withErrors(['error' => 'You must be active to login.']);
+                if ($user && \Hash::check($request->password, $user->password) && $user->active != 1) {
+                    $errors = [$this->username() => trans('auth.deleted')];
                 }
+                return redirect()->back()
+                    ->withInput($request->only($this->username(), 'remember'))
+                    ->withErrors($errors);
+            }else{
+                if($user->email_verified_at==null){
+                    if ($user && \Hash::check($request->password, $user->password) && $user->active != 1) {
+                        $errors = [$this->username() => trans('auth.not_verified')];
+                    }
+                    return redirect()->back()
+                        ->withInput($request->only($this->username(), 'remember'))
+                        ->withErrors($errors);
+                }else{
+                    // Make sure the user is actived
+                    if ($user->actived==1 && $this->attemptLogin($request)) {
+                        // Send the normal successful login response
+                        return $this->sendLoginResponse($request);
+                    } else {
+                        //*Warning: Deactivated account
+                        // Increment the failed login attempts and redirect back to the
+                        // login form with an error message.
+                        if ($user && \Hash::check($request->password, $user->password) && $user->active != 1) {
+                            $errors = [$this->username() => trans('auth.not_actived')];
+                        }
+                        return redirect()->back()
+                            ->withInput($request->only($this->username(), 'remember'))
+                            ->withErrors($errors);
+                    }
+                }
+                
             }
         }
     
