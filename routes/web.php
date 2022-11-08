@@ -26,4 +26,4 @@ Route::get('/adminViews/{id}/adminActivate','AdminController@activate')->name('a
 Route::get('/adminViews/{id}/adminDeactivate','AdminController@deactivate')->name('adminDeactivate');
 Route::resource('adminViews','AdminController');
 
-Route::get('/email/verify/{id}','Auth\LoginController@verify')->name('loginVerify');
+Route::get('/email/verify/{id}/{hash}','Auth\LoginController@verify')->name('loginVerify');
