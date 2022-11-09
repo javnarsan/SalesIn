@@ -37,7 +37,7 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-    public function verify($id)
+    public function verifyEmail($id)
     {
         $user = User::find($id);
         $user->email_verified_at=now();
