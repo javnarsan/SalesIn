@@ -93,10 +93,9 @@ class RegisterController extends Controller
 
         event(new Registered($user = $this->create($request->all())));
 
-        //$this->guard()->login($user);
-
+        //$this->guard()->login($user);gist 
         return $this->registered($request, $user)
-                        ?: redirect($this->redirectPath());
+                        ?: redirect($this->redirectPath())->with('message', ['success', __("Email sent! Please check your email to verify your account.")]); 
     }
 
 }

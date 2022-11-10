@@ -42,7 +42,7 @@ class LoginController extends Controller
         $user = User::find($id);
         $user->email_verified_at=now();
         $user->update();
-        return redirect('home');
+        return back()->with('message', ['success', __("Email verified!")]); 
     }
     public function login(\Illuminate\Http\Request $request) {
         $this->validateLogin($request);    

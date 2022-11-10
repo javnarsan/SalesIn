@@ -2,11 +2,23 @@
 
 @section('content')
 <div class="container">
+    
     <div class="row justify-content-center">
         <div class="col-md-8">
+            @if(session('message'))
+                <div class="alert alert-{{ session('message')[0] }}">
+                    {{ session('message')[1] }}
+                </div>
+            @endif
+            @if(session('message1'))
+                <div class="alert alert-{{ session('message1')[0] }}">
+                    {{ session('message1')[1] }}
+                </div>
+            @endif
+
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
-
+                
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
