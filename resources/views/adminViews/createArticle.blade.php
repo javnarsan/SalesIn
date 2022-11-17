@@ -1,8 +1,11 @@
+@extends('layouts/base')
+ 
+@section('main')
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Admin Menu</title>
+        <title>Admin Edit</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -69,48 +72,45 @@
           <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
 
-        <header>
-            <nav class="navbar navbar-expand-md navbar-dark shadow-sm fondoCabecero">
-                <div class="container">
-                    <a class="navbar-brand" href="{{ route('home') }}">
-                        {{ config('app.name', 'SalesIn') }}
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-        
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <!-- Left Side Of Navbar -->
-                        <ul class="navbar-nav mr-auto">
-        
-                        </ul>
-        
-                        <!-- Right Side Of Navbar -->
-                    </div>
-                </div>
-            </nav>
-        </header>
+
     </head>
     <body class="bg-dark text-light" >
-       
         <div id="app">
-       
+        
 
+        <main class="py-4">
+            @yield('main')
+        </main>
     </div>
-            <div class="content">
-                <div class="title m-b-md">
-                    Hello Admin!!
-                </div>
-                <div class="links">
-                    <h2>
-                      <a href="{{ route('adminViews.index') }}" class="text-light card-title">{{ __('Users') }}</a>
-                   </h2>
-                   <h2>
-                      <a href="{{ route('articles') }}" class="text-light card-title">{{ __('Articles') }}</a>
-                   </h2>
-                </div>
+    <div class="row">
+    <div class="col-sm-8 offset-sm-2">
+        <h1 class="display-3">Creating Article</h1>
 
-              
+        <form method="post" action="{{ route('newCreateArticle') }}">
+            @csrf
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input id="title" type="text" class="form-control" name="title" />
             </div>
-        </div>
+ 
+            <div class="form-group">
+                <label for="image">Image:</label>
+                <input id="image" type="text" class="form-control" name="image" />
+            </div>
+ 
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <input id="description" type="text" class="form-control" name="description" />
+            </div>
+
+            <div class="form-group">
+                <label for="cicle_id">Cicle Id: </label>
+                <input id="cicle_id" type="text" class="form-control" name="cicle_id" />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+    </div>
+</div>
     </body>
+@endsection

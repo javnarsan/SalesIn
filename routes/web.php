@@ -24,6 +24,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/adminMenu','AdminController@menu')->name('adminMenu');
 Route::get('/adminViews/{id}/adminActivate','AdminController@activate')->name('adminActivate');
 Route::get('/adminViews/{id}/adminDeactivate','AdminController@deactivate')->name('adminDeactivate');
+Route::get('/adminViews/articlesIndex','AdminController@articles')->name('articles');
+Route::post('/adminViews/articlesIndex/createArticle','AdminController@createArticle')->name('createArticle');
+Route::post('/adminViews/articlesIndex/newCreateArticle','AdminController@newCreateArticle')->name('newCreateArticle');
 Route::resource('adminViews','AdminController');
 
 Route::get('/email/verify/{id}','Auth\LoginController@verifyEmail')->name('verification.verify');
