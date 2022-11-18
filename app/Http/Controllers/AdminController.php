@@ -124,28 +124,6 @@ class AdminController extends Controller
         return redirect('adminViews')->with('success', 'User deactivated.');
     }
 
-    public function articles()
-    {
-        $articles = Articles::latest()->paginate(10);
-        return view('adminViews/articlesIndex', compact('articles'));
-    }
-
-    public function newCreateArticle(Request $request)
-    {   
-        $article = new Articles;
-        $article->title = $request->get('title');
-        $article->image = $request->get('image');
-        $article->description = $request->get('description');
-        $article->cicle_id = $request->get('cicle_id');
-        $article->save();
-        
-        return redirect('adminViews/articlesIndex')->with('success', 'Article created.'); // -> resources/views/stocks/index.blade.php
-       
-    }
-
-    public function createArticle()
-    {
-        return view('adminViews/createArticle');
-    }
+   
 
 }

@@ -28,5 +28,6 @@ Route::get('/adminViews/articlesIndex','AdminController@articles')->name('articl
 Route::post('/adminViews/articlesIndex/createArticle','AdminController@createArticle')->name('createArticle');
 Route::post('/adminViews/articlesIndex/newCreateArticle','AdminController@newCreateArticle')->name('newCreateArticle');
 Route::resource('adminViews','AdminController');
+Route::resource('articlesViews', 'ArticlesController');
 
 Route::get('/email/verify/{id}','Auth\LoginController@verifyEmail')->name('verification.verify');
