@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Articles;
 
 class ArticlesController extends Controller
 {
@@ -14,7 +15,7 @@ class ArticlesController extends Controller
     public function index()
     {
         $articles = Articles::latest()->paginate(10);
-        return view('adminViews/articlesIndex', compact('articles'));
+        return view('articlesViews/articlesIndex', compact('articles'));
     }
 
     /**
@@ -42,7 +43,7 @@ class ArticlesController extends Controller
         $article->cicle_id = $request->get('cicle_id');
         $article->save();
         
-        return redirect('adminViews/articlesIndex')->with('success', 'Article created.');
+        return redirect('articlesViews/articlesIndex')->with('success', 'Article created.');
     }
 
     /**

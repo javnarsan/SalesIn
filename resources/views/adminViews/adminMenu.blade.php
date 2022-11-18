@@ -106,7 +106,7 @@
                       <a href="{{ route('adminViews.index') }}" class="text-light card-title">{{ __('Users') }}</a>
                    </h2>
                    <h2>
-                      <a href="{{ route('articles') }}" class="text-light card-title">{{ __('Articles') }}</a>
+                      <a href="{{ route('articlesViews.index') }}" class="text-light card-title">{{ __('Articles') }}</a>
                    </h2>
                 </div>
 
