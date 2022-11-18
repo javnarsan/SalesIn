@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Articles;
+use App\Cicles;
 
 class ArticlesController extends Controller
 {
@@ -65,7 +66,11 @@ class ArticlesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cicles=cicles::all();
+        $article = Articles::find($id);
+        
+        return view('articlesViews/editArticle', compact(['article','cicles']));
+        
     }
 
     /**
@@ -77,7 +82,21 @@ class ArticlesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title'=>'required',
+            'image'=>'required',
+            'description'=>'required',
+            'cicle_id'=>'required'
+        ]); 
+        $article = Articles::find($id);
+        // Getting values from the blade template form
+        $article->title = $request->get('title');
+        $article->image = $request->get('image');
+        $article->description = $request->get('description');
+        $article->cicle_id = $request->get('cicle_id');
+        $article->update();
+
+        return redirect('articlesViews')->with('success', 'Article updated.');
     }
 
     /**

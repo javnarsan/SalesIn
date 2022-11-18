@@ -60,7 +60,16 @@
                     <td class="text-light">{{($article->image)}}</td>
                     <td class="text-light">{{($article->description)}}</td>
                     <td class="text-light">{{($article->cicle_id)}}</td>
-                    
+                    <td class="text-light">
+                        <a href="{{ route('articlesViews.edit', $article->id)}}" class="btn btn-primary">Edit</a>
+                    </td>
+                    <td>
+                        <form action="{{ route('articlesViews.destroy', $article->id)}}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger" onclick="return confirm('Are you sure to delete this article?');" type="submit">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 @endif
                 @endforeach
