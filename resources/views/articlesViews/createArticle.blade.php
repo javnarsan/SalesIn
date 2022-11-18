@@ -86,7 +86,7 @@
     <div class="col-sm-8 offset-sm-2">
         <h1 class="display-3">Creating Article</h1>
 
-        <form method="post" action="{{ route('newCreateArticle') }}">
+        <form method="post" action="{{ route('articlesViews.store') }}">
             @csrf
             <div class="form-group">
                 <label for="title">Title:</label>

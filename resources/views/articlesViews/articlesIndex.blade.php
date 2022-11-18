@@ -34,7 +34,7 @@
         <div class="col-sm-12">
             <h1 class="display-3 text-light">Articles</h1>
             <div>
-                <form action="{{ route('createArticle')}}" method="post">
+                <form action="{{ route('articlesViews.create')}}" >
                     @csrf
                     <button class="btn btn-primary" type="submit">Add Article</button>
                 </form>
