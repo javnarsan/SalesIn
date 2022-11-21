@@ -40,7 +40,11 @@
                 </form>
             </div>
         </div>     
-          
+        @if($emptyList==True)
+            <div class="column col-sm-7">
+                <h2 class="display-4 text-light bg-danger text-center">There are no articles yet</h2>
+            </div>
+        @else
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -75,6 +79,7 @@
                 @endforeach
             </tbody>
         </table>
+        @endif
     </div>
         
     <div>

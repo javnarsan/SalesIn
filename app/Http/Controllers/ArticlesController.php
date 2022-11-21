@@ -14,9 +14,22 @@ class ArticlesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        $emptyList=False;
         $articles = Articles::latest()->paginate(10);
-        return view('articlesViews/articlesIndex', compact('articles'));
+        if($articles->isEmpty()){
+            $emptyList=True;
+        }else{
+            foreach($articles as $article){
+                if($article->deleted==0){
+                    $emptyList=False;
+                    break;
+                }else{
+                    $emptyList=True;
+                }
+            }
+        }
+        return view('articlesViews/articlesIndex', compact('articles','emptyList'));
     }
 
     /**
@@ -45,7 +58,7 @@ class ArticlesController extends Controller
         $article->cicle_id = $request->get('cicle_id');
         $article->save();
         
-        return redirect('articlesViews/articlesIndex')->with('success', 'Article created.');
+        return redirect('articlesViews')->with('success', 'Article created.');
     }
 
     /**
@@ -108,6 +121,9 @@ class ArticlesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $article = Articles::find($id);
+        $article->deleted=1;
+        $article->update();
+        return redirect('articlesViews')->with('success', 'Article deleted.'); 
     }
 }
