@@ -104,8 +104,15 @@
             </div>
 
             <div class="form-group">
-                <label for="cicle_id">Cicle Id: </label>
-                <input id="cicle_id" type="text" class="form-control" name="cicle_id" />
+                 <label for="cicle_id">Cicle: </label>
+                                <select name="cicle_id" class="form-control{{ $errors->has('cicle_id') ? ' is-invalid':''}}">
+                                    <option value="" selected disabled hidden>Choose a cicle</option>
+                                    @foreach($cicles as $cicle)
+                                        <option value="{{$cicle->id}}">{{$cicle->name}}</option>
+                                    @endforeach
+                                    <option value="" selected disabled hidden>Choose a cicle</option>
+                        </select>
+                    
             </div>
 
             <button type="submit" class="btn btn-primary">Create</button>

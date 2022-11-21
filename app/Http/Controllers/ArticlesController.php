@@ -26,7 +26,8 @@ class ArticlesController extends Controller
      */
     public function create()
     {
-        return view('articlesViews/createArticle');
+        $cicles=cicles::all();
+        return view('articlesViews/createArticle', compact('cicles'));
     }
 
     /**
