@@ -86,7 +86,7 @@
     <div class="col-sm-8 offset-sm-2">
         <h1 class="display-3">Creating Article</h1>
 
-        <form method="post" action="{{ route('articlesViews.store') }}">
+        <form method="post" action="{{ route('articlesViews.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="title">Title:</label>
@@ -95,7 +95,7 @@
  
             <div class="form-group">
                 <label for="image">Image:</label>
-                <input id="image" type="text" class="form-control" name="image" />
+                <input id="image" type="file" class="form-control" name="image" />
             </div>
  
             <div class="form-group">

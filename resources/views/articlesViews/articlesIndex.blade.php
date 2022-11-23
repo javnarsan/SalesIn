@@ -61,7 +61,9 @@
                 <tr>
                     <td class="text-light">{{($article->id)}}</td>
                     <td class="text-light">{{($article->title)}} </td>
-                    <td class="text-light">{{($article->image)}}</td>
+                    <td class="text-light">
+                    <img class="group list-group-image" src="{{ asset('images/'.$article->image) }}" width=150px height=150px>
+                    </td>
                     <td class="text-light">{{($article->description)}}</td>
                     <td class="text-light">{{($article->cicle_id)}}</td>
                     <td class="text-light">

@@ -97,7 +97,7 @@
         <br /> 
         @endif
 
-        <form method="post" action="{{ route('articlesViews.update', $article->id) }}">
+        <form method="post" action="{{ route('articlesViews.update', $article->id) }}" enctype="multipart/form-data">
             @method('PATCH') 
             @csrf
             <div class="form-group">
@@ -108,7 +108,7 @@
  
             <div class="form-group">
                 <label for="image">Image:</label>
-                <input type="text" class="form-control" name="image" value="{{ $article->image }}" />
+                <input id="image" type="file" class="form-control" name="image" />
             </div>
  
             <div class="form-group">
