@@ -108,7 +108,8 @@
  
             <div class="form-group">
                 <label for="image">Image:</label>
-                <input id="image" type="file" class="form-control" name="image" />
+                <br>
+                <input id="image" type="file"  name="image" />
             </div>
  
             <div class="form-group">
