@@ -113,6 +113,7 @@
  
             <div class="form-group">
                 <label for="image">Image:</label>
+                <br>                
                 <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ $article->image }}" required autocomplete="title" autofocus />
 
                 @error('image')

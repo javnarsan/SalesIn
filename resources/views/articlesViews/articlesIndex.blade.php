@@ -18,6 +18,14 @@
         .fondoCabecero{
         background-color: #555353
         }
+
+        #column{
+            max-width: 500px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            width: 100%;
+        }
+
         
     </style>
 </head>
@@ -53,6 +61,7 @@
                 <td class="text-light">Image</td>
                 <td class="text-light">Description</td>
                 <td class="text-light">Cicle_id</td>
+                <td class="text-light text-center">Actions</td>
                 </tr>
             </thead>
             <tbody>
@@ -60,11 +69,11 @@
                 @if($article->deleted==0)
                 <tr>
                     <td class="text-light">{{($article->id)}}</td>
-                    <td class="text-light">{{($article->title)}} </td>
+                    <td class="text-light" id="column">{{($article->title)}} </td>
                     <td class="text-light">
                     <img class="group list-group-image" src="{{ asset('images/'.$article->image) }}" width=150px height=150px>
                     </td>
-                    <td class="text-light">{{($article->description)}}</td>
+                    <td class="text-light" id="column">{{($article->description)}}</td>
                     <td class="text-light">{{($article->cicle_id)}}</td>
                     <td class="text-light">
                         <a href="{{ route('articlesViews.edit', $article->id)}}" class="btn btn-primary">Edit</a>
