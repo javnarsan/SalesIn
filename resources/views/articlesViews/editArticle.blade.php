@@ -101,33 +101,48 @@
             @method('PATCH') 
             @csrf
             <div class="form-group">
- 
                 <label for="title">Title:</label>
-                <input type="text" class="form-control" name="title" value="{{ $article->title }}" />
+                <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ $article->title }}" required autocomplete="title" autofocus />
+
+                @error('title')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
  
             <div class="form-group">
                 <label for="image">Image:</label>
-                <input id="image" type="file" class="form-control" name="image" />
+                <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ $article->image }}" required autocomplete="title" autofocus />
+
+                @error('image')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
  
             <div class="form-group">
                 <label for="description">Description:</label>
-                <input type="text" class="form-control" name="description" value="{{ $article->description }}" />
+                <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ $article->description }}" required autocomplete="description" autofocus />
+
+                @error('description')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
 
             <div class="form-group">
-                 <label for="cicle_id">Cicle: </label>
-                                <select name="cicle_id" class="form-control{{ $errors->has('cicle_id') ? ' is-invalid':''}}">
-                                    <option value="" selected disabled hidden>Choose a cicle</option>
-                                    @foreach($cicles as $cicle)
-                                        <option value="{{$cicle->id}}">{{$cicle->name}}</option>
-                                    @endforeach
-                                    <option value="" selected disabled hidden>Choose a cicle</option>
-                        </select>
-                    
+                <label for="cicle_id">Cicle: </label>
+                <select name="cicle_id" class="form-control{{ $errors->has('cicle_id') ? ' is-invalid':''}}">
+                    <option value="" selected disabled hidden>Choose a cicle</option>
+                    @foreach($cicles as $cicle)
+                        <option value="{{$cicle->id}}">{{$cicle->name}}</option>
+                    @endforeach
+                    <option value="" selected disabled hidden>Choose a cicle</option>
+                </select>
             </div>
-
 
             <button type="submit" class="btn btn-primary">Save</button>
         </form>
