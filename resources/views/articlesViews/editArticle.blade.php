@@ -109,7 +109,10 @@
             <div class="form-group">
                 <label for="image">Image:</label>
                 <br>
-                <input id="image" type="file"  name="image" />
+                <img class="group list-group-image" src="{{ asset('images/'.$article->image) }}" width=150px height=150px>
+                <input id="image" type="file"  name="image"  value="" />
+               
+
             </div>
  
             <div class="form-group">
