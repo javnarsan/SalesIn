@@ -108,16 +108,24 @@
                     <div class="row d-flex align-items-center flex-column ">
                         <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8">
                             <div class="owl-carousel feedback-slider">
-
+                                <?php
+                                    $num = 64;
+                                    $var = chr($num);
+                                ?>
                                 <!-- slider item -->
                                 @foreach($offers as $offer)
                                 @if($offer->deleted==0)
                                 <div class="feedback-slider-item text-black bg-dark">
+
+                                    <?php
+                                        $num = $num + 1;
+                                        $var = chr($num);
+                                    ?>
                                     <h3  class="customer-name text-primary">Titulo</h3>
                                     <p>Descripcion</p>
                                     <span class="light-bg">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dialogo1">Show</button>
-                                    <div class="modal fade" id="dialogo1">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#<?php echo $var?>">Show</button>
+                                    <div class="modal fade" id="<?php echo $var?>">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                         
