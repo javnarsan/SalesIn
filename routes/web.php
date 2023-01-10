@@ -27,5 +27,6 @@ Route::get('/adminViews/{id}/adminDeactivate','AdminController@deactivate')->nam
 
 Route::resource('adminViews','AdminController');
 Route::resource('articlesViews', 'ArticlesController');
+Route::resource('offersViews', 'OffersController');
 
 Route::get('/email/verify/{id}','Auth\LoginController@verifyEmail')->name('verification.verify');
