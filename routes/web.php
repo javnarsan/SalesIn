@@ -19,6 +19,7 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home/{offer_id}','HomeController@apply')->name('apply');
 
 
 Route::get('/adminMenu','AdminController@menu')->name('adminMenu');
@@ -27,6 +28,5 @@ Route::get('/adminViews/{id}/adminDeactivate','AdminController@deactivate')->nam
 
 Route::resource('adminViews','AdminController');
 Route::resource('articlesViews', 'ArticlesController');
-Route::resource('offersViews', 'OffersController');
 
 Route::get('/email/verify/{id}','Auth\LoginController@verifyEmail')->name('verification.verify');

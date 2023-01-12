@@ -160,7 +160,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn-primary">Apply</button>
+                                    <br><br>
+                                    <form action="{{ route('apply', $offer->id)}}" method="post">
+                                        @csrf
+                                        @method('GET')
+                                        <button class="btn btn-primary" type="submit">Apply</button>
+                                    </form>
                                     </span>
                                 </div>
                                 @endif
@@ -172,12 +177,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div>
-        @if($offers->count())
-            {{ $offers->links() }}
-        @endif
     </div>
 
     </body>
